@@ -1,0 +1,15 @@
+{
+  "name": "set-manager-pro",
+  "version": "0.0.1",
+  "description": "Help directors and ADs organize and schedule film shoots.",
+  "scripts": {
+    "test": "gulp test"
+  },
+  "keywords": [
+    "film",
+    "schedule",
+    "shots",
+    "personnel"
+  ],
+  "author": "The Graber and Thorn Team"
+}
