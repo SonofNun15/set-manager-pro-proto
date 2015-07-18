@@ -7,7 +7,8 @@ module sm.views.shotView {
 			restrict:'E', 
 			templateUrl: 'views/shot/shotView.html',
 			scope: {
-				shot: '='
+				shot: '=',
+				deleteShot: '&',
 			}
 		}
 	}

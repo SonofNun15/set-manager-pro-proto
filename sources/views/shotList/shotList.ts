@@ -46,6 +46,10 @@ module sm.views.shotList {
 			this.shotList.$add(this.newShot);
 			this.newShot = null;
 		}
+		
+		deleteShot(shot: IShot): void {
+			this.shotList.$remove(shot);
+		}
 	}   
 	
 	function shotList(): ng.IDirective {

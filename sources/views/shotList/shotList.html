@@ -1,6 +1,6 @@
 <div>
 	<div class="content-group" ng-repeat="shot in controller.shotList">
-		<sm-shot-view shot="shot"></sm-shot-view>
+		<sm-shot-view shot="shot" delete-shot="controller.deleteShot(shot)"></sm-shot-view>
 	</div>
 	<div class="content-group">
 		<sm-shot-editor shot="controller.newShot"></sm-shot-editor>

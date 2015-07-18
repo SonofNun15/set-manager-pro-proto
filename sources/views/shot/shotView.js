@@ -11,7 +11,8 @@ var sm;
                     restrict: 'E',
                     templateUrl: 'views/shot/shotView.html',
                     scope: {
-                        shot: '='
+                        shot: '=',
+                        deleteShot: '&',
                     }
                 };
             }
