@@ -3,17 +3,28 @@
 	<title>Set Manager Pro</title>
 	
 	<!-- CSS -->
-	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="/css/bootstrap.css">
 	
 	<!-- Scripts -->
+	<script src="/bower_components/angular/angular.min.js"></script>
+	<script src="/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+	<script src="/sources/app.js"></script>
+	<script src="/sources/config/config.module.js"></script>
+	<script src="/sources/views/views.module.js"></script>
+	<script src="/sources/views/shotList/shotList.js"></script>
+	<script src='https://cdn.firebase.com/js/client/2.2.7/firebase.js'></script>
+	<script src="https://cdn.firebase.com/libs/angularfire/1.1.2/angularfire.min.js"></script>
 </head>
-<body ng-app="setManagerPro">
+
+<body ng-app="sm">
 	<header>
 		<sm-header></sm-header>
 	</header>
 	<main>
 		<div class="container">
 			<article>
+				<sm-shot-list></sm-shot-list>
+				
 				<div class="view-container" ng-cloak>
 					<div class="view-window" ui-view></div>
 				</div>
