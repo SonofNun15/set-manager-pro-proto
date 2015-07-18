@@ -1,24 +1,31 @@
 <md-list-item class="md-2-line">
-	<img ng-src="http://www.metaphorcreative.us/smpdev/www/images/storyboard_01.jpg" alt="{{shot.scene}}"
-		height="90" width="200" style="margin:0 20 0 5; padding: 16px 0"/>
-	<div class="md-list-item-text"
+	<div style="width:225">
+		<img ng-src="http://www.metaphorcreative.us/smpdev/www/images/{{shot.shotImage}}" 
+			 alt="{{shot.scene}}" height="90" width="200" style="margin:0 20 0 5; padding: 16px 0"/>
+	</div>
+	<div style="width:30%">
 		<p>
-			<label>Shot ID:</label>{{shot.shotID}}
-			&nbsp;&nbsp;&nbsp;
-			<label>Scene:</label>{{shot.scene}}
+			<label>Shot ID:</label> {{shot.shotID}}
 		</p>
 		<p>
-			<label>Story day:</label>{{shot.storyDay}}
-			&nbsp;&nbsp;&nbsp;
-			<label>Time to shoot:</label>{{shot.timeToShoot}}
+			<label>Story day:</label> {{shot.storyDay}}
 		</p>
 		<p>
-			<label>Shot duration:</label>{{shot.shotDuration}}
+			<label>Shot duration:</label> {{shot.shotDuration}}
 		</p>
 	</div>
-	<div class="pull-right" style="padding: 16px 0">
+	<div style="width:30%">
+		<p>
+			<label>Scene:</label> {{shot.scene}}
+		</p>
+		<p>
+			<label>Time to shoot:</label> {{shot.timeToShoot}}
+		</p>
+	</div>
+	<div class="pull-right" style="padding: 16px 0; width: *">
 		<button class="btn btn-default" type="button" ng-click="deleteShot({ shot: shot })">
 			<i class="fa fa-remove text-danger"></i>
 		</button>
 	</div>
 </md-list-item>
+<md-divider></md-divider>
