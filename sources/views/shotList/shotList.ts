@@ -1,17 +1,40 @@
 /// <reference path='../../../typings/angularjs/angular.d.ts' />
 
 module sm.views.shotList {
-	class ShotListController {
+	var mockShotList: IShot[] = [
+		{
+			scene: 'Final Battle',
+		    storyDay: '22',
+			timeToShoot: '30min',
+			shotDuration: '4 sec',
+		},
+		{
+			scene: 'First Scene',
+		    storyDay: '22',
+			timeToShoot: '30min',
+			shotDuration: '2 sec',
+		},
+	];
+	
+	interface IShot {
 		scene: string;
 		storyDay: string;
 		timeToShoot: string;
 		shotDuration: string;
+	}
+	
+	class ShotListController {
+		shotList: IShot[];
 		
-		showShot(): void {
-			console.log('scene: ' + this.scene);
-			console.log('storyDay: ' + this.storyDay);
-			console.log('timeToShoot: ' + this.timeToShoot);
-			console.log('shotDuration: ' + this.shotDuration);
+		constructor() {
+			this.shotList = mockShotList; 
+		} 
+		
+		showShot(shot: IShot): void {
+			console.log('scene: ' + shot.scene);
+			console.log('storyDay: ' + shot.storyDay);
+			console.log('timeToShoot: ' + shot.timeToShoot);
+			console.log('shotDuration: ' + shot.shotDuration);
 		}
 	}   
 	
@@ -21,7 +44,7 @@ module sm.views.shotList {
 			restrict: 'E',
 			templateUrl: 'views/shotList/shotList.html',
 			controller: 'ShotListController',
-			controllerAs: 'shotList',
+			controllerAs: 'controller',
 		};
 	}
 	
