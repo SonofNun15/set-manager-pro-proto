@@ -39,6 +39,9 @@ var sm;
                 ShotListController.prototype.deleteShot = function (shot) {
                     this.shotList.$remove(shot);
                 };
+                ShotListController.prototype.editShot = function (shot) {
+                    this.shotList.$save(shot);
+                };
                 ShotListController.$inject = ['$firebaseArray'];
                 return ShotListController;
             })();

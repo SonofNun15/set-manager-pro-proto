@@ -9,6 +9,7 @@ module sm.views.shotView {
 			scope: {
 				shot: '=',
 				deleteShot: '&',
+				editShot: '&',
 			}
 		}
 	}

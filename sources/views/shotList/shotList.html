@@ -1,7 +1,9 @@
 <md-content>
 	<md-list>
 		<div ng-repeat="shot in controller.shotList">
-			<sm-shot-view shot="shot" delete-shot="controller.deleteShot(shot)"></sm-shot-view>
+			<sm-shot-view shot="shot" delete-shot="controller.deleteShot(shot)"
+				edit-shot="controller.editShot(shot)">
+				</sm-shot-view>
 		</div>
 	</md-list>
 	<div class="content-group">

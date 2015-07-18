@@ -13,6 +13,7 @@ var sm;
                     scope: {
                         shot: '=',
                         deleteShot: '&',
+                        editShot: '&',
                     }
                 };
             }
