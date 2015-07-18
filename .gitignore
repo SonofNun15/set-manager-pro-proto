@@ -2,3 +2,5 @@
 *.map.js
 
 bower_components/
+
+typings/
