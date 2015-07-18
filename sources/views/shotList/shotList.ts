@@ -25,6 +25,7 @@ module sm.views.shotList {
 	
 	class ShotListController {
 		shotList: IShot[];
+		newShot: IShot;
 		
 		constructor() {
 			this.shotList = mockShotList; 
@@ -35,6 +36,11 @@ module sm.views.shotList {
 			console.log('storyDay: ' + shot.storyDay);
 			console.log('timeToShoot: ' + shot.timeToShoot);
 			console.log('shotDuration: ' + shot.shotDuration);
+		}
+		
+		createShot(): void {
+			this.shotList.push(this.newShot);
+			this.newShot = null;
 		}
 	}   
 	

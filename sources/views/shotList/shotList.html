@@ -1,30 +1,9 @@
 <div>
-	<div ng-repeat="shot in controller.shotList">
-		<div class="row">
-			<div class="col-xs-2">Scene:</div>
-			<div class="col-xs-8"><input type="text" ng-model="shot.scene" /></div>
-			<div class="clearfix"></div>
-		</div>
-		<div class="row">
-			<div class="col-xs-2">Story day:</div>
-			<div class="col-xs-8"><input type="text" ng-model="shot.storyDay" /></div>
-			<div class="clearfix"></div>
-		</div>
-		<div class="row">
-			<div class="col-xs-2">Time to shoot:</div>
-			<div class="col-xs-8"><input type="text" ng-model="shot.timeToShoot" /></div>
-			<div class="clearfix"></div>
-		</div>
-		<div class="row">
-			<div class="col-xs-2">Shot duration:</div>
-			<div class="col-xs-8"><input type="text" ng-model="shot.shotDuration" /></div>
-			<div class="clearfix"></div>
-		</div>
-		<div class="row">
-			<div class="col-xs-4">
-				<button class="btn btn-default" type="button" ng-click="controller.showShot(shot)">Show Shot</button>
-			</div>
-			<div class="clearfix"></div>
-		</div>
+	<div class="content-group" ng-repeat="shot in controller.shotList">
+		<sm-shot-view shot="shot"></sm-shot-view>
 	</div>
+	<div class="content-group">
+		<sm-shot-editor shot="controller.newShot"></sm-shot-editor>
+	</div>
+	<button class="btn btn-default" ng-click="controller.createShot()">Create Shot</button>
 </div>
