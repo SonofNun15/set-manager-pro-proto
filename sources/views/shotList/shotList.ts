@@ -43,7 +43,7 @@ module sm.views.shotList {
 		}
 		
 		createShot(): void {
-			this.shotList.push(this.newShot);
+			this.shotList.$add(this.newShot);
 			this.newShot = null;
 		}
 	}   
