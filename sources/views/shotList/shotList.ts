@@ -1,4 +1,6 @@
 /// <reference path='../../../typings/angularjs/angular.d.ts' />
+/// <reference path='../../../typings/firebase/firebase.d.ts' />
+/// <reference path='../../../typings/angularfire/angularfire.d.ts' />
 
 module sm.views.shotList {
 	var mockShotList: IShot[] = [
@@ -24,10 +26,12 @@ module sm.views.shotList {
 	}
 	
 	class ShotListController {
-		shotList: IShot[];
+		shotList: AngularFireArray;
 		
-		constructor() {
-			this.shotList = mockShotList; 
+		static $inject: string[] = ['$firebaseArray'];
+		constructor(firebaseArray : AngularFireArrayService) {
+			var shotsRef = new Firebase("https://flickering-torch-2606.firebaseio.com/Shots");
+			this.shotList = firebaseArray(shotsRef); 
 		} 
 		
 		showShot(shot: IShot): void {
@@ -48,7 +52,7 @@ module sm.views.shotList {
 		};
 	}
 	
-	angular.module('sm.views.shotList', [])
+	angular.module('sm.views.shotList', ['firebase'])
 		.directive('smShotList', shotList)
 		.controller('ShotListController', ShotListController);
 }
