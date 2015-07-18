@@ -4,6 +4,7 @@ module sm {
 	'use strict';
 	
 	angular.module('sm', [
+		'ngMaterial',
 		'ui.router',
 		
 		'sm.views',
