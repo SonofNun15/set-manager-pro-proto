@@ -4,6 +4,7 @@
 	
 	<!-- CSS -->
 	<link rel="stylesheet" href="/css/bootstrap.css">
+	<link rel="stylesheet" href="/css/sm-custom-styles.css">
 	
 	<!-- Scripts -->
 	<script src="/bower_components/angular/angular.min.js"></script>
@@ -12,6 +13,9 @@
 	<script src="/sources/config/config.module.js"></script>
 	<script src="/sources/views/views.module.js"></script>
 	<script src="/sources/views/shotList/shotList.js"></script>
+	<script src="/sources/views/shot/shotEditor.js"></script>
+	<script src="/sources/views/shot/shotView.js"></script>
+    <script src="/sources/views/shot/shot.module.js"></script>
 </head>
 <body ng-app="sm">
 	<header>
@@ -25,6 +29,7 @@
 				<div class="view-container" ng-cloak>
 					<div class="view-window" ui-view></div>
 				</div>
+				<!--<a ui-sref="shotList">Shot List</a>-->
 			</article>
 		</div>
 	</main>
