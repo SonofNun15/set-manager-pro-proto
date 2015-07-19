@@ -50,6 +50,7 @@ module sm.views.shotList {
 		deleteShot(shot: IShot): void {
 			this.shotList.$remove(shot);
 		}
+		
 		editShot(shot: IShot): void {
 			this.shotList.$save(shot);
 		}
