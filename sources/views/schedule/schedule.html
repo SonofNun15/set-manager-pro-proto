@@ -1,7 +1,7 @@
 <md-content>
 	<md-list>
 		<div ng-repeat="shot in controller.schedule">
-			<sm-adshot-view 
+			<sm-adshot-view shot="shot" 
 				edit-shot="controller.editShot(shot)">
 			</sm-adshot-view>
 		</div>
