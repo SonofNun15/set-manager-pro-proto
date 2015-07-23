@@ -1,0 +1,25 @@
+{
+  "name": "set-manager-pro",
+  "version": "0.0.0",
+  "homepage": "https://github.com/SamGraber/set-manager-pro",
+  "authors": [
+    "SamGraber <sgraber@renovo1.com>"
+  ],
+  "main": "sources/index.html",
+  "keywords": [
+    "angular"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angularjs": "~1.4.3",
+    "angular-ui-router": "~0.2.15",
+    "angular-material": "~0.10.0"
+  }
+}
