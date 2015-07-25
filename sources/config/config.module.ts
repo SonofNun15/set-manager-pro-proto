@@ -9,8 +9,8 @@ module sm.config {
 	function routeConfiguration($state: ng.ui.IStateService): void {
 		'use strict';
 	}
-	
 	routes.$inject = ['$stateProvider'];
+
 	function routes($stateProvider: ng.ui.IStateProvider): void {
 		$stateProvider
 			.state('shotList', {
