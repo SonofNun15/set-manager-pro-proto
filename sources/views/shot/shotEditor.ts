@@ -5,7 +5,7 @@ module sm.views.shotEditor {
 		'use strict';
 		return {
 			restrict:'E', 
-			templateUrl: 'views/shot/shotEditor.html',
+			templateUrl: '/views/shot/shotEditor.html',
 			scope: {
 				shot: '='
 			}

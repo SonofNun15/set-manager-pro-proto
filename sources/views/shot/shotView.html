@@ -1,50 +1,42 @@
-<md-list-item class="md-2-line">
-	<div style="width:225">
-		<img ng-src="http://www.metaphorcreative.us/smpdev/www/images/{{shot.shotImage}}" 
-			 alt="{{shot.scene}}" height="90" width="200" style="margin:0 20 0 5; padding: 16px 0"/>
-	</div>
-	<div style="width:15%">
-		<p>
-			<label class="form-control-static">Shot ID:</label>
-		</p>
-		<p>
-			<label class="form-control-static">Story day:</label> 
-		</p>
-		<p>
-			<label class="form-control-static">Shot duration:</label> 
-		</p>
-	</div>
-	<div style="width:15%">
-		<p>
-			<input type="text" ng-model="shot.shotID" class="form-control" ng-blur="editShot({ shot: shot })" />
-		</p>
-		<p>
-			<input type="text" ng-model="shot.storyDay" class="form-control" ng-blur="editShot({ shot: shot })" />
-		</p>
-		<p>
-			<input type="text" ng-model="shot.shotDuration" class="form-control" ng-blur="editShot({ shot: shot })" />
-		</p>
-	</div>
-	<div style="width:15%; margin-left:10px">
-		<p>
-			<label class="form-control-static">Scene:</label> 
-		</p>
-		<p>
-			<label class="form-control-static">Time to shoot:</label> 
-		</p>
-	</div>
-	<div style="width:15%; margin-right:10px">
-		<p>
-			<input type="text" ng-model="shot.scene" class="form-control" ng-blur="editShot({ shot: shot })" />
-		</p>
-		<p>
-			<input type="text" ng-model="shot.timeToShoot" class="form-control" ng-blur="editShot({ shot: shot })" />
-		</p>
-	</div>
-	<div class="pull-right">
-		<button class="btn btn-default" type="button" ng-click="deleteShot({ shot: shot })">
-			<i class="fa fa-remove text-danger"></i>
-		</button>
-	</div>
-</md-list-item>
-<md-divider></md-divider>
+<!--<md-list-item class="md-2-line">-->
+<md-card>
+	<md-card-content>
+		<div layout="row">
+			<div style="width: 225px"><!--<div style="width:225">-->
+				<img ng-src="http://www.metaphorcreative.us/smpdev/www/images/{{shot.shotImage}}" 
+					 alt="{{shot.scene}}" width="100%"/>
+			</div>
+			<div layout="row" flex>
+				<div layout="column" flex="50">
+					<div layout="row" style="margin-bottom: 5px">
+						<label flex="35" class="form-control-static text-right" style="margin-left: 10px; margin-right: 5px">Shot ID: </label>
+						<input flex="65" type="text" ng-model="shot.shotID" class="form-control" ng-blur="editShot({ shot: shot })" />
+					</div>
+					<div layout="row" style="margin-bottom: 5px">
+						<label flex="35" class="form-control-static text-right" style="margin-left: 10px; margin-right: 5px">Story day: </label>
+						<input flex="65" type="text" ng-model="shot.storyDay" class="form-control" ng-blur="editShot({ shot: shot })" />
+					</div>
+					<div layout="row">
+						<label flex="35" class="form-control-static text-right" style="margin-left: 10px; margin-right: 5px">Shot duration: </label>
+						<input flex="65" type="text" ng-model="shot.shotDuration" class="form-control" ng-blur="editShot({ shot: shot })" />
+					</div>
+				</div>
+				<div layout="column" flex="50">
+					<div layout="row" style="margin-bottom: 5px">
+						<label flex="35" class="form-control-static text-right" style="margin-left: 10px; margin-right: 5px">Scene: </label> 
+						<input flex="65" type="text" ng-model="shot.scene" class="form-control" ng-blur="editShot({ shot: shot })" />
+					</div>
+					<div layout="row">
+						<label flex="35" class="form-control-static text-right" style="margin-left: 10px; margin-right: 5px">Time to shoot: </label> 
+						<input flex="65" type="text" ng-model="shot.timeToShoot" class="form-control" ng-blur="editShot({ shot: shot })" />
+					</div>
+				</div>
+			</div>
+			<div class="text-right" style="width: 60px">
+				<button class="btn btn-default" type="button" ng-click="deleteShot({ shot: shot })">
+					<i class="fa fa-remove text-danger"></i>
+				</button>
+			</div>
+		</div>
+	</md-card-content>
+</md-card>

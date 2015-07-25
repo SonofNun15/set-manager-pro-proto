@@ -14,8 +14,8 @@ module sm.config {
 	function routes($stateProvider: ng.ui.IStateProvider): void {
 		$stateProvider
 			.state('shotList', {
-				url: '/shotList',
-				templateUrl: 'views/shotList/shotList.html',
+				url: '/app/shotList',
+				templateUrl: '/views/shotList/shotList.html',
 			});
 	}
 }
