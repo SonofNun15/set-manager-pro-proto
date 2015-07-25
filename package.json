@@ -11,5 +11,8 @@
     "shots",
     "personnel"
   ],
-  "author": "The Graber and Thorn Team"
+  "author": "The Graber and Thorn Team",
+  "dependencies": {
+    "express": "^4.13.1"
+  }
 }
