@@ -24,6 +24,12 @@ module sm.config {
 			.state('shotList', {
 				url: '/app/shotList',
 				templateUrl: '/views/shotList/shotList.html',
+			})
+			.state('schedule', {
+				url: '/schedule',
+				templateUrl: '/views/schedule/schedule.html',
+				controller: 'ScheduleController',
+				controllerAs: 'controller',
 			});
 	}
 }
