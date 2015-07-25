@@ -22,8 +22,10 @@ module sm.config {
 	function routes($stateProvider: ng.ui.IStateProvider): void {
 		$stateProvider
 			.state('shotList', {
-				url: '/app/shotList',
+				url: '/shotList',
 				templateUrl: '/views/shotList/shotList.html',
+				controller: 'ShotListController',
+				controllerAs: 'controller',
 			})
 			.state('schedule', {
 				url: '/schedule',
