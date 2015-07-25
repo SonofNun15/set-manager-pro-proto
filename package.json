@@ -14,5 +14,9 @@
   "author": "The Graber and Thorn Team",
   "dependencies": {
     "express": "^4.13.1"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-utilities": "https://github.com/RenovoSolutions/Gulp-Typescript-Utilities/archive/0.8.6.tar.gz"
   }
 }
