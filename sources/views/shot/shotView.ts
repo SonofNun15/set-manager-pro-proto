@@ -5,7 +5,7 @@ module sm.views.shotView {
 		'use strict';
 		return {
 			restrict:'E', 
-			templateUrl: 'views/shot/shotView.html',
+			templateUrl: '/views/shot/shotView.html',
 			scope: {
 				shot: '=',
 				deleteShot: '&',

@@ -60,7 +60,7 @@ module sm.views.shotList {
 		'use strict';
 		return {
 			restrict: 'E',
-			templateUrl: 'views/shotList/shotList.html',
+			templateUrl: '/views/shotList/shotList.html',
 			controller: 'ShotListController',
 			controllerAs: 'controller',
 		};

@@ -35,7 +35,7 @@ module sm.views.schedule {
 		'use strict';
 		return {
 			restrict: 'E',
-			templateUrl: 'views/schedule/schedule.html',
+			templateUrl: '/views/schedule/schedule.html',
 			controller: 'ScheduleController',
 			controllerAs: 'controller',
 		};
