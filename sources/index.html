@@ -1,31 +1,24 @@
 <html>
 <head>
 	<title>Set Manager Pro</title>
-	
+
+	<base href="/app/">
+
 	<!-- CSS -->
 	<link rel="stylesheet" href="/css/bootstrap.css">
 	<link rel="stylesheet" href="/css/sm-custom-styles.css">
 	<link rel="stylesheet" href="/bower_components/angular-material/angular-material.min.css">
 	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-	
+
 	<!-- Scripts -->
 	<script src="/bower_components/angular/angular.js"></script>
 	<script src="/bower_components/angular-aria/angular-aria.js"></script>
 	<script src="/bower_components/angular-animate/angular-animate.js"></script>
 	<script src="/bower_components/angular-material/angular-material.js"></script>
 	<script src="/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
-	<script src="/sources/app.js"></script>
-	<script src="/sources/config/config.module.js"></script>
-	<script src="/sources/views/views.module.js"></script>
-	<script src="/sources/views/shotList/shotList.js"></script>
 	<script src='https://cdn.firebase.com/js/client/2.2.7/firebase.js'></script>
 	<script src="https://cdn.firebase.com/libs/angularfire/1.1.2/angularfire.min.js"></script>
-	<script src="/sources/views/shot/shotEditor.js"></script>
-	<script src="/sources/views/shot/shotView.js"></script>
-	<script src="/sources/views/shot/shot.module.js"></script>
-	<script src="/sources/views/schedule/schedule.js"></script>
-	<script src="/sources/views/adshot/adshotView.js"></script>
-	<script src="/sources/views/adshot/adshot.module.js"></script>
+	<script src="/sources/app.js"></script>
 </head>
 
 <body ng-app="sm">
@@ -35,9 +28,6 @@
 	<main>
 		<div class="container">
 			<article>
-				<sm-shot-list></sm-shot-list>
-				<!--<sm-schedule></sm-schedule>-->
-				
 				<div class="view-container" ng-cloak>
 					<div class="view-window" ui-view></div>
 				</div>

@@ -10,6 +10,6 @@ module sm.views.adshotView {
 				shot: '=',
 				editShot: '&',
 			}
-		}
+		};
 	}
 }

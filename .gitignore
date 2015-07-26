@@ -1,12 +1,12 @@
 # compiled javascript files
-*.js
-*.map.js
+/output/
+/tests/
 
 # client side dependencies
-bower_components/
+/bower_components/
 
 # node dependencies
 /node_modules/
 
 # type definitions
-typings/
+/typings/
