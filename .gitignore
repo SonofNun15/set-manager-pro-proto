@@ -1,7 +1,6 @@
 # compiled javascript files
-*.js
-*.map.js
 /output/
+/tests/
 
 # client side dependencies
 /bower_components/
