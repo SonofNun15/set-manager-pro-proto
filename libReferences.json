@@ -1,0 +1,22 @@
+[
+	{
+		"js": "angular/angular.js",
+		"min": "angular/angular.min.js"
+	},
+	{
+		"js": "angular-animate/angular-animate.js",
+		"min": "angular-animate/angular-animate.min.js"
+	},
+	{
+		"js": "angular-aria/angular-aria.js",
+		"min": "angular-aria/angular-aria.min.js"
+	},
+	{
+		"js": "angular-material/angular-material.js",
+		"min": "angular-material/angular-material.min.js"
+	},
+	{
+		"js": "angular-ui-router/release/angular-ui-router.js",
+		"min": "angular-ui-router/release/angular-ui-router.min.js",		"min": "angular-material/angular-material.min.js"
+	}
+]
