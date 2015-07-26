@@ -1,0 +1,8 @@
+{
+	"assets": "css",
+	"libraries": "bower_components",
+	"debug": "output/debug",
+	"release": "output/release",
+	"source": "sources",
+	"tests": "tests"
+}
