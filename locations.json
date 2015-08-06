@@ -1,5 +1,5 @@
 {
-	"assets": "css",
+	"assets": "assets",
 	"libraries": "libraries",
 	"debug": "output/debug",
 	"release": "output/release",
