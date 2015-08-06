@@ -11,7 +11,7 @@ var serverDirectory = __dirname;
 console.log(serverDirectory);
 
 app.use('/views', express.static(serverDirectory + '/output/debug/views'));
-app.use('/sources', express.static(serverDirectory + '/output/debug'));
+app.use('/js', express.static(serverDirectory + '/output/debug'));
 app.use('/libraries', express.static(serverDirectory + '/output/debug/libraries'));
 app.use('/assets', express.static(serverDirectory + '/output/debug/assets'));
 

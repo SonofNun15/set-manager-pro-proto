@@ -3,6 +3,6 @@
 	"libraries": "libraries",
 	"debug": "output/debug",
 	"release": "output/release",
-	"source": "sources",
+	"source": "source",
 	"tests": "tests"
 }
