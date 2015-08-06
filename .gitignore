@@ -3,7 +3,7 @@
 /tests/
 
 # client side dependencies
-/bower_components/
+/libraries/
 
 # node dependencies
 /node_modules/

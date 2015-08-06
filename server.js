@@ -12,8 +12,8 @@ console.log(serverDirectory);
 
 app.use('/views', express.static(serverDirectory + '/output/debug/views'));
 app.use('/sources', express.static(serverDirectory + '/output/debug'));
-app.use('/bower_components', express.static(serverDirectory + '/output/debug/bower_components'));
 app.use('/css', express.static(serverDirectory + '/output/debug/css'));
+app.use('/libraries', express.static(serverDirectory + '/output/debug/libraries'));
 
 app.get('/app/*', function (request, response) {
 	return response.sendFile(serverDirectory + '/output/debug/index.html');

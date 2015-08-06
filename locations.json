@@ -1,6 +1,6 @@
 {
 	"assets": "css",
-	"libraries": "bower_components",
+	"libraries": "libraries",
 	"debug": "output/debug",
 	"release": "output/release",
 	"source": "sources",
