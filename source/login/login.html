@@ -12,11 +12,11 @@
 	<script src="/libraries/angular-material/angular-material.js"></script>
 	<script src='https://cdn.firebase.com/js/client/2.2.7/firebase.js'></script>
 	<script src="https://cdn.firebase.com/libs/angularfire/1.1.2/angularfire.min.js"></script>
-	<script src="/js/login/login.js"></script>
+	<script src="/js/login/app.js"></script>
 </head>
-<body layout="row" layout-align="center center"
+<body ng-app="sm.login" layout="row" layout-align="center center"
 	  style="background-color: #eee">
-	<md-content>
+	<md-content ng-controller="LoginController">
 		<md-card>
 			<md-toolbar>
 				<h1 class="md-title">Set Manager Pro</h1>
@@ -30,6 +30,9 @@
 					<label>Email</label>
 					<input type="email">
 				</md-input-container>
+				<md-button ng-click="test()">
+					Test
+				</md-button>
 			</md-card-content>
 		</md-card>
 	</md-content>
