@@ -4,7 +4,7 @@ var defaultKarma = require('gulp-utilities').karma;
 var locations = require('./locations.json');
 
 module.exports = function(karma) {
-	config = defaultKarma(karma, libraries, locations);
+	config = defaultKarma(karma, libraries, locations.login);
 
 	config.plugins = [
 		'karma-mocha',

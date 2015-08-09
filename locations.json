@@ -1,8 +1,18 @@
 {
-	"assets": "assets",
-	"libraries": "libraries",
-	"debug": "output/debug",
-	"release": "output/release",
-	"source": "source",
-	"tests": "tests"
+	"app": {
+		"assets": "assets",
+		"libraries": "libraries",
+		"debug": "output/app/debug",
+		"release": "output/app/release",
+		"source": "source/app",
+		"tests": "tests/app"
+	},
+	"login": {
+		"assets": "assets",
+		"libraries": "libraries",
+		"debug": "output/login/debug",
+		"release": "output/login/release",
+		"source": "source/login",
+		"tests": "tests/login"
+	}
 }
