@@ -6,6 +6,7 @@ module sm.login {
 	'use strict';
 
 	angular.module('sm.login', [
+		'ngMessages',
 		'ngMaterial',
 	]).controller(controllerName, LoginController);
 ;
