@@ -2,13 +2,27 @@
 module sm.login {
 	export var controllerName: string = 'LoginController';
 
-	export interface ILoginController {
+	interface IUser {
+		username: string;
+		password: string;
+	}
 
+	export interface ILoginController {
+		submit(): void;
 	}
 
 	export class LoginController implements ILoginController {
-		test(): void {
-			alert('TEST!');
+		private user: IUser;
+
+		constructor() {
+			this.user = {
+				username: '',
+				password: '',
+			};
+		}
+
+		submit(): void {
+			alert('Hello, ' + this.user.username);
 		}
 	}
 }

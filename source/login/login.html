@@ -23,17 +23,26 @@
 				<h1 class="md-title">Set Manager Pro</h1>
 			</md-toolbar>
 			<md-card-content>
-				<md-input-container>
-					<label>Username</label>
-					<input type="text">
-				</md-input-container>
-				<md-input-container>
-					<label>Email</label>
-					<input type="email">
-				</md-input-container>
-				<md-button ng-click="login.test()">
-					Test
-				</md-button>
+				<form name="loginForm" ng-submit="login.submit()">
+					<md-input-container>
+						<label>Username</label>
+						<input name="username" type="text" ng-model="login.user.username" required />
+						<div ng-messages="loginForm.username.$error" ng-show="loginForm.username.$dirty">
+							<div ng-message="required">Username is required.</div>
+				        </div>
+					</md-input-container>
+					<!--<md-input-container>
+						<label>Email</label>
+						<input type="email">
+					</md-input-container>-->
+					<md-input-container>
+						<label>Password</label>
+						<input name="password" type="password" ng-model="login.user.password" required />
+					</md-input-container>
+					<md-button class="md-raised">
+						Login
+					</md-button>
+				</form>
 			</md-card-content>
 		</md-card>
 	</md-content>
