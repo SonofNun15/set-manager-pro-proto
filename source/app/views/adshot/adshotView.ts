@@ -1,4 +1,4 @@
-/// <reference path='../../../typings/angularjs/angular.d.ts' />
+/// <reference path='../../../../typings/angularjs/angular.d.ts' />
 
 module sm.views.adshotView {
 	export function adshotView(): ng.IDirective {

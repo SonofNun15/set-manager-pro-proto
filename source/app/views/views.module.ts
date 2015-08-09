@@ -1,4 +1,4 @@
-/// <reference path='../../typings/angularjs/angular.d.ts' />
+/// <reference path='../../../typings/angularjs/angular.d.ts' />
 
 /// <reference path='adshot/adshot.module.ts' />
 /// <reference path='schedule/schedule.ts' />

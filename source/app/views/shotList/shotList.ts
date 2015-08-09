@@ -1,6 +1,6 @@
-/// <reference path='../../../typings/angularjs/angular.d.ts' />
-/// <reference path='../../../typings/firebase/firebase.d.ts' />
-/// <reference path='../../../typings/angularfire/angularfire.d.ts' />
+/// <reference path='../../../../typings/angularjs/angular.d.ts' />
+/// <reference path='../../../../typings/firebase/firebase.d.ts' />
+/// <reference path='../../../../typings/angularfire/angularfire.d.ts' />
 
 module sm.views.shotList {
 	interface IShot {
