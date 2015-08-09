@@ -62,8 +62,12 @@ gulpUtilities.test.config(__dirname + '/karma-login.conf.js', {
 	},
 }, gulp)
 
+ var runSequence = require('run-sequence').use(gulp);
+
 gulp.task('default', ['build']);
-gulp.task('build', ['build.app', 'build.login']);
+gulp.task('build', function(done) {
+	runSequence('build.app', 'build.login', done);
+});
 
 gulp.task('build.app', ['build.app.debug']);
 gulp.task('build.login', ['build.login.debug']);
