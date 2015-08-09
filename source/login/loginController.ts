@@ -7,11 +7,6 @@ module sm.login {
 	}
 
 	export class LoginController implements ILoginController {
-		static $inject: string[] = ['$scope'];
-		constructor(private $scope: any) {
-			$scope.test = this.test;
-		}
-
 		test(): void {
 			alert('TEST!');
 		}

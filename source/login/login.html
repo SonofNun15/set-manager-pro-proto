@@ -16,7 +16,7 @@
 </head>
 <body ng-app="sm.login" layout="row" layout-align="center center"
 	  style="background-color: #eee">
-	<md-content ng-controller="LoginController">
+	<md-content ng-controller="LoginController as login">
 		<md-card>
 			<md-toolbar>
 				<h1 class="md-title">Set Manager Pro</h1>
@@ -30,7 +30,7 @@
 					<label>Email</label>
 					<input type="email">
 				</md-input-container>
-				<md-button ng-click="test()">
+				<md-button ng-click="login.test()">
 					Test
 				</md-button>
 			</md-card-content>
