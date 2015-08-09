@@ -10,13 +10,18 @@ var serverDirectory = __dirname;
 
 console.log(serverDirectory);
 
-app.use('/views', express.static(serverDirectory + '/output/debug/views'));
-app.use('/js', express.static(serverDirectory + '/output/debug'));
-app.use('/libraries', express.static(serverDirectory + '/output/debug/libraries'));
-app.use('/assets', express.static(serverDirectory + '/output/debug/assets'));
+app.use('/views', express.static(serverDirectory + '/output/app/debug/views'));
+app.use('/js/app', express.static(serverDirectory + '/output/app/debug'));
+app.use('/js/login', express.static(serverDirectory + '/output/login/debug'));
+app.use('/libraries', express.static(serverDirectory + '/output/app/debug/libraries'));
+app.use('/assets', express.static(serverDirectory + '/output/app/debug/assets'));
+
+app.get('/login/', function(request, response) {
+	return response.sendFile(serverDirectory + '/output/login/debug/login.html');
+});
 
 app.get('/app/*', function (request, response) {
-	return response.sendFile(serverDirectory + '/output/debug/index.html');
+	return response.sendFile(serverDirectory + '/output/app/debug/index.html');
 });
 
 app.get('/', function(request, response) {
