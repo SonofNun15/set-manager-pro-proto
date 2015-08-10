@@ -1,4 +1,4 @@
-/// <reference path='../../../typings/angularjs/angular.d.ts' />
+/// <reference path='../../../../typings/angularjs/angular.d.ts' />
 
 module sm.views.shotEditor {
 	export function shotEditor(): ng.IDirective {

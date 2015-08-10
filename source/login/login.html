@@ -1,0 +1,50 @@
+<html>
+<head>
+	<title>Set Manager Pro</title>
+
+	<link rel="stylesheet" href="/assets/css/sm-custom-styles.css">
+	<link rel="stylesheet" href="/libraries/angular-material/angular-material.min.css">
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+	<script src="/libraries/angular/angular.js"></script>
+	<script src="/libraries/angular-messages/angular-messages.js"></script>
+	<script src="/libraries/angular-aria/angular-aria.js"></script>
+	<script src="/libraries/angular-animate/angular-animate.js"></script>
+	<script src="/libraries/angular-material/angular-material.js"></script>
+	<script src='https://cdn.firebase.com/js/client/2.2.7/firebase.js'></script>
+	<script src="https://cdn.firebase.com/libs/angularfire/1.1.2/angularfire.min.js"></script>
+	<script src="/js/login/app.js"></script>
+</head>
+<body ng-app="sm.login" layout="row" layout-align="center center"
+	  style="background-color: #eee">
+	<md-content ng-controller="LoginController as login">
+		<md-card>
+			<md-toolbar>
+				<h1 class="md-title">Set Manager Pro</h1>
+			</md-toolbar>
+			<md-card-content>
+				<form name="loginForm" ng-submit="login.submit()">
+					<md-input-container>
+						<label>Username</label>
+						<input name="username" type="text" ng-model="login.user.username" required />
+						<div ng-messages="loginForm.username.$error" ng-show="loginForm.username.$dirty">
+							<div ng-message="required">Username is required.</div>
+				        </div>
+					</md-input-container>
+					<!--<md-input-container>
+						<label>Email</label>
+						<input type="email">
+					</md-input-container>-->
+					<md-input-container>
+						<label>Password</label>
+						<input name="password" type="password" ng-model="login.user.password" required />
+					</md-input-container>
+					<md-button class="md-raised">
+						Login
+					</md-button>
+				</form>
+			</md-card-content>
+		</md-card>
+	</md-content>
+</body>
+</html>
