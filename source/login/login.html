@@ -2,6 +2,8 @@
 <head>
 	<title>Set Manager Pro</title>
 
+	<base href="/app/">
+
 	<link rel="stylesheet" href="/assets/css/sm-custom-styles.css">
 	<link rel="stylesheet" href="/libraries/angular-material/angular-material.min.css">
 	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
@@ -23,18 +25,28 @@
 				<h1 class="md-title">Set Manager Pro</h1>
 			</md-toolbar>
 			<md-card-content>
+				<div>
+					<md-button class="md-fab md-primary" ng-click="login.gitHubLogin()">
+						<i class="fa fa-github"></i>
+					</md-button>
+					<md-button class="md-fab md-primary" ng-click="login.googleLogin()">
+						<i class="fa fa-google"></i>
+					</md-button>
+					<md-button class="md-fab md-primary" ng-click="login.twitterLogin()">
+						<i class="fa fa-twitter"></i>
+					</md-button>
+					<md-button class="md-fab md-primary" ng-click="login.facebookLogin()">
+						<i class="fa fa-facebook"></i>
+					</md-button>
+				</div>
 				<form name="loginForm" ng-submit="login.submit()">
 					<md-input-container>
-						<label>Username</label>
-						<input name="username" type="text" ng-model="login.user.username" required />
-						<div ng-messages="loginForm.username.$error" ng-show="loginForm.username.$dirty">
-							<div ng-message="required">Username is required.</div>
+						<label>Email</label>
+						<input name="email" type="email" ng-model="login.user.email" required />
+						<div ng-messages="loginForm.email.$error" ng-show="loginForm.email.$dirty">
+							<div ng-message="required">Email is required.</div>
 				        </div>
 					</md-input-container>
-					<!--<md-input-container>
-						<label>Email</label>
-						<input type="email">
-					</md-input-container>-->
 					<md-input-container>
 						<label>Password</label>
 						<input name="password" type="password" ng-model="login.user.password" required />
