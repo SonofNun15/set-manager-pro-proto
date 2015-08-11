@@ -1,4 +1,6 @@
 var express = require('express');
+var _ = require('lodash');
+var Firebase = require('firebase');
 
 //Lets define a port we want to listen to
 //const
@@ -16,12 +18,25 @@ app.use('/js/login', express.static(serverDirectory + '/output/login/debug'));
 app.use('/libraries', express.static(serverDirectory + '/output/app/debug/libraries'));
 app.use('/assets', express.static(serverDirectory + '/output/app/debug/assets'));
 
-app.get('/login/', function(request, response) {
-	return response.sendFile(serverDirectory + '/output/login/debug/login.html');
-});
+app.get('/app*', function (request, response) {
+	if (!_.isUndefined(request.query.token)) {
+		var ref = new Firebase('https://flickering-torch-2606.firebaseio.com');
 
-app.get('/app/*', function (request, response) {
-	return response.sendFile(serverDirectory + '/output/app/debug/index.html');
+		try
+		{
+			ref.authWithCustomToken(request.query.token, function(error, authData) {
+				if (error) {
+					response.sendFile(serverDirectory + '/output/login/debug/login.html');
+				} else {
+					response.sendFile(serverDirectory + '/output/app/debug/index.html');	
+				}
+			});
+		} catch (err) {
+			return response.sendFile(serverDirectory + '/output/login/debug/login.html');
+		}
+	} else {
+		return response.sendFile(serverDirectory + '/output/login/debug/login.html');
+	}
 });
 
 app.get('/', function(request, response) {
