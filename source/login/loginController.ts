@@ -75,8 +75,10 @@ module sm.login {
 		
 		private handleAuthenticated: { (authData: FirebaseAuthData): void } = 
 			(authData: FirebaseAuthData): void => {
-				this.$location.search('token', authData.token);
-				this.$window.location.replace(this.$location.absUrl());
+				if (authData != null) {
+					this.$location.search('token', authData.token);
+					this.$window.location.replace(this.$location.absUrl());
+				}
 			};
 	}
 }
