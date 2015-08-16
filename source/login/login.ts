@@ -8,6 +8,12 @@ module sm.login {
 	angular.module('sm.login', [
 		'ngMessages',
 		'ngMaterial',
-	]).controller(controllerName, LoginController);
-;
+	]).controller(controllerName, LoginController)
+	.config(routeConfiguration);
+	
+	routeConfiguration.$inject = ['$locationProvider'];
+	function routeConfiguration($locationProvider: angular.ILocationProvider): void {
+		'use strict';
+		$locationProvider.html5Mode(true);
+	}
 }
