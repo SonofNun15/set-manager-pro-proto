@@ -26,7 +26,7 @@ gulpUtilities.build.config({
 		compile: 'compile.login',
 		copy: 'copy.login',
 	},
-});
+}, gulp);
 
 // Configure tests for main application
 gulpUtilities.test.config(__dirname + '/karma-app.conf.js', {
