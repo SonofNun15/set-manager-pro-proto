@@ -19,23 +19,10 @@ app.use('/libraries', express.static(serverDirectory + '/output/app/debug/librar
 app.use('/assets', express.static(serverDirectory + '/output/app/debug/assets'));
 
 app.get('/app*', function (request, response) {
-	if (!_.isUndefined(request.query.token)) {
-		var ref = new Firebase('https://flickering-torch-2606.firebaseio.com');
-
-		try
-		{
-			ref.authWithCustomToken(request.query.token, function(error, authData) {
-				if (error) {
-					response.sendFile(serverDirectory + '/output/login/debug/login.html');
-				} else {
-					response.sendFile(serverDirectory + '/output/app/debug/index.html');	
-				}
-			});
-		} catch (err) {
-			return response.sendFile(serverDirectory + '/output/login/debug/login.html');
-		}
+	if (Authenticate (request)) {
+		response.sendFile(serverDirectory + '/output/app/debug/index.html');	
 	} else {
-		return response.sendFile(serverDirectory + '/output/login/debug/login.html');
+		response.sendFile(serverDirectory + '/output/login/debug/login.html');
 	}
 });
 
@@ -46,3 +33,24 @@ app.get('/', function(request, response) {
 var server = app.listen(PORT, function() {
 	console.log('Listening on port ' + PORT + '...');
 });
+
+function Authenticate (request) {
+	if (!_.isUndefined(request.query.token)) {
+		var ref = new Firebase('https://flickering-torch-2606.firebaseio.com');
+
+		try
+		{
+			ref.authWithCustomToken(request.query.token, function(error, authData) {
+				if (error) {
+					return false;
+				} else {
+					return true;
+				}
+			});
+		} catch (err) {
+			return false;
+		}
+	} else {
+		return false;
+	}
+};
