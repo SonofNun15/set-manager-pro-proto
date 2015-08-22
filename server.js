@@ -46,7 +46,7 @@ function authenticate(request, callback) {
 				if (error) {
 					callback(false);
 				} else {
-					callback(true);
+					findUser(authData.uid, callback)
 				}
 			});
 		} catch (err) {
@@ -56,3 +56,38 @@ function authenticate(request, callback) {
 		callback(false);
 	}
 };
+
+function findUser(uid, callback) {
+	console.log('findUser');
+	var userRef = new Firebase('https://flickering-torch-2606.firebaseio.com/users/' + uid);
+	console.log('userRef = ' + userRef)
+	
+	userRef.once('value', function(userRefSnap) {
+		if (userRefSnap.val() == null) {
+			console.log('new user');
+			var userEmail = 'userEmail';
+			var newUserRef = new Firebase('https://flickering-torch-2606.firebaseio.com/newUsers/' + userEmail);
+			newUserRef.once('value', function(newUserRefSnap) {
+				if (newUserRefSnap.val() == null) {
+					console.log('new user not found');
+					callback(false);
+				} else {
+					var newUser = newUserRefSnap.val();
+					console.log('new user found');
+					var usersRef = new Firebase('https://flickering-torch-2606.firebaseio.com/users');
+					usersRef.child(uid).set({
+						name: newUser.name,
+						email: newUser.email
+					});
+					newUserRef.remove();
+					
+					callback(true);
+				}
+			});
+		}
+		else {
+			console.log('user found');
+			callback(true);
+		}
+	});
+}
