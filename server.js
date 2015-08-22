@@ -65,8 +65,8 @@ function findUser(uid, callback) {
 	userRef.once('value', function(userRefSnap) {
 		if (userRefSnap.val() == null) {
 			console.log('new user');
-			var userEmail = 'userEmail';
-			var newUserRef = new Firebase('https://flickering-torch-2606.firebaseio.com/newUsers/' + userEmail);
+			var newUserGUID = '12345';
+			var newUserRef = new Firebase('https://flickering-torch-2606.firebaseio.com/newUsers/' + newUserGUID);
 			newUserRef.once('value', function(newUserRefSnap) {
 				if (newUserRefSnap.val() == null) {
 					console.log('new user not found');
