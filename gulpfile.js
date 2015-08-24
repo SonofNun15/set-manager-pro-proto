@@ -74,7 +74,7 @@ gulpUtilities.test.config(__dirname + '/karma-login.conf.js', {
 	},
 }, gulp)
 
-// Configure tests for login application
+// Configure tests for registration application
 gulpUtilities.test.config(__dirname + '/karma-login.conf.js', {
 	locations: locations.registration,
 	taskNames: {
