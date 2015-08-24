@@ -39,6 +39,33 @@
 					<div ng-message="required">Family name is required.</div>
 				</div>
 			</md-input-container>
+			<md-input-container>
+				<label>Email (required for account activation)</label>
+				<input name="email" type="email" required ng-model="user.email" />
+				<div ng-messages="registrationForm.email.$error" ng-show="registrationForm.email.$dirty">
+					<div ng-message="required">Email is required.</div>
+				</div>
+			</md-input-container>
+			<md-input-container>
+				<label>Phone</label>
+				<input name="phone" type="tel" ng-model="user.phone" />
+			</md-input-container>
+			<md-input-container>
+				<!--<label>How did you find us?</label>-->
+				<md-select ng-model="user.referral" name="referral" placeholder="How did you find us?" required style="min-width: 200px;">
+					<md-option value="{{option}}" ng-repeat="option in registration.referralOptions">{{option}}</md-option>
+				</md-select>
+				<div class="errors" ng-messages="registrationForm.referral.$error" ng-show="registrationForm.referral.$dirty">
+					<div ng-message="required">This field is required</div>
+				</div>
+			</md-input-container>
+			<md-input-container>
+				<label>Reason for using Set Manager Pro</label>
+				<textarea name="bio" ng-model="user.biography" required></textarea>
+				<div ng-messages="registrationForm.bio.$error" ng-show="registrationForm.bio.$dirty">
+					<div ng-message="required">This field is required</div>
+				</div>
+			</md-input-container>
 			<md-button class="md-raised">
 				Register
 			</md-button>
