@@ -28,7 +28,7 @@ gulpUtilities.build.config({
 	},
 }, gulp);
 
-// Configure build for login application
+// Configure build for registration application
 gulpUtilities.build.config({
 	locations: locations.registration,
 	taskNames: {
