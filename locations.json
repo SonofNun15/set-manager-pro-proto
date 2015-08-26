@@ -14,5 +14,13 @@
 		"release": "output/login/release",
 		"source": "source/login",
 		"tests": "tests/login"
+	},
+	"registration": {
+		"assets": "assets",
+		"libraries": "libraries",
+		"debug": "output/registration/debug",
+		"release": "output/registration/release",
+		"source": "source/registration",
+		"tests": "tests/registration"
 	}
 }

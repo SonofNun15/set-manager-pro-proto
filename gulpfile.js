@@ -28,6 +28,18 @@ gulpUtilities.build.config({
 	},
 }, gulp);
 
+// Configure build for registration application
+gulpUtilities.build.config({
+	locations: locations.registration,
+	taskNames: {
+		lint: 'lint.registration',
+		build: 'build.registration',
+		clean: 'clean.registration',
+		compile: 'compile.registration',
+		copy: 'copy.registration',
+	},
+}, gulp);
+
 // Configure tests for main application
 gulpUtilities.test.config(__dirname + '/karma-app.conf.js', {
 	locations: locations.app,
@@ -62,12 +74,37 @@ gulpUtilities.test.config(__dirname + '/karma-login.conf.js', {
 	},
 }, gulp)
 
+// Configure tests for registration application
+gulpUtilities.test.config(__dirname + '/karma-login.conf.js', {
+	locations: locations.registration,
+	taskNames: {
+		test: {
+			base: 'test.registration',
+			debug: 'debug',
+			tc: 'tc',
+			all: 'all',
+			prep: 'prep',
+			clean: 'clean',
+			build: 'build',
+			copy: 'copy',
+		}
+	},
+}, gulp)
+
  var runSequence = require('run-sequence').use(gulp);
 
-gulp.task('default', ['build']);
-gulp.task('build', function(done) {
-	runSequence('build.app', 'build.login', done);
+gulp.task('default', function(done) {
+	runSequence('build.app', 'build.login', 'build.registration', done);
 });
+
+gulp.task('build', ['build.app']);
 
 gulp.task('build.app', ['build.app.debug']);
 gulp.task('build.login', ['build.login.debug']);
+gulp.task('build.registration', ['build.registration.debug']);
+
+gulp.task('test', ['test.app']);
+
+gulp.task('test.all', function(done) {
+	runSequence('test.app', 'test.login', 'test.registration', done);
+});

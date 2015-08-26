@@ -1,0 +1,75 @@
+<html>
+<head>
+	<title>Set Manager Pro</title>
+
+	<base href="/registration/">
+
+	<link rel="stylesheet" href="/assets/css/sm-custom-styles.css">
+	<link rel="stylesheet" href="/libraries/angular-material/angular-material.min.css">
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+	<script src="/libraries/angular/angular.js"></script>
+	<script src="/libraries/angular-messages/angular-messages.js"></script>
+	<script src="/libraries/angular-aria/angular-aria.js"></script>
+	<script src="/libraries/angular-animate/angular-animate.js"></script>
+	<script src="/libraries/angular-material/angular-material.js"></script>
+	<script src='https://cdn.firebase.com/js/client/2.2.7/firebase.js'></script>
+	<script src="https://cdn.firebase.com/libs/angularfire/1.1.2/angularfire.min.js"></script>
+	<script src="/js/registration/app.js"></script>
+</head>
+<body ng-app="sm.registration">
+	<header>
+		<md-toolbar>
+			<h1 class="md-title">Set Manager Pro</h1>
+		</md-toolbar>
+	</header>
+	<md-content ng-controller="RegistrationController as registration" style="background-color: white">
+		<form name="registrationForm" action="/registration" method="post">
+			<md-input-container>
+				<label>Given name</label>
+				<input name="givenName" type="text" required ng-model="user.givenName" />
+				<div ng-messages="registrationForm.givenName.$error" ng-show="registrationForm.givenName.$dirty">
+					<div ng-message="required">Given name is required.</div>
+				</div>
+			</md-input-container>
+			<md-input-container>
+				<label>Family name</label>
+				<input name="familyName" type="text" required ng-model="user.familyName" />
+				<div ng-messages="registrationForm.familyName.$error" ng-show="registrationForm.familyName.$dirty">
+					<div ng-message="required">Family name is required.</div>
+				</div>
+			</md-input-container>
+			<md-input-container>
+				<label>Email (required for account activation)</label>
+				<input name="email" type="email" required ng-model="user.email" />
+				<div ng-messages="registrationForm.email.$error" ng-show="registrationForm.email.$dirty">
+					<div ng-message="required">Email is required.</div>
+				</div>
+			</md-input-container>
+			<md-input-container>
+				<label>Phone</label>
+				<input name="phone" type="tel" ng-model="user.phone" />
+			</md-input-container>
+			<md-input-container>
+				<!--<label>How did you find us?</label>-->
+				<md-select ng-model="user.referral" name="referral" placeholder="How did you find us?" required style="min-width: 200px;">
+					<md-option value="{{option}}" ng-repeat="option in registration.referralOptions">{{option}}</md-option>
+				</md-select>
+				<div class="errors" ng-messages="registrationForm.referral.$error" ng-show="registrationForm.referral.$dirty">
+					<div ng-message="required">This field is required</div>
+				</div>
+			</md-input-container>
+			<md-input-container>
+				<label>Reason for using Set Manager Pro</label>
+				<textarea name="bio" ng-model="user.biography" required></textarea>
+				<div ng-messages="registrationForm.bio.$error" ng-show="registrationForm.bio.$dirty">
+					<div ng-message="required">This field is required</div>
+				</div>
+			</md-input-container>
+			<md-button class="md-raised">
+				Register
+			</md-button>
+		</form>
+	</md-content>
+</body>
+</html>
