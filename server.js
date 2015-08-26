@@ -15,8 +15,13 @@ console.log(serverDirectory);
 app.use('/views', express.static(serverDirectory + '/output/app/debug/views'));
 app.use('/js/app', express.static(serverDirectory + '/output/app/debug'));
 app.use('/js/login', express.static(serverDirectory + '/output/login/debug'));
+app.use('/js/registration', express.static(serverDirectory + '/output/registration/debug'));
 app.use('/libraries', express.static(serverDirectory + '/output/app/debug/libraries'));
 app.use('/assets', express.static(serverDirectory + '/output/app/debug/assets'));
+
+app.get('/registration', function(request, response) {
+	return response.sendFile(serverDirectory + '/output/registration/debug/registration.html');
+});
 
 app.get('/app*', function (request, response) {
 	authenticate(request, function (authenticated) {
@@ -61,7 +66,7 @@ function findUser(uid, callback) {
 	console.log('findUser');
 	var userRef = new Firebase('https://flickering-torch-2606.firebaseio.com/users/' + uid);
 	console.log('userRef = ' + userRef)
-	
+
 	userRef.once('value', function(userRefSnap) {
 		if (userRefSnap.val() == null) {
 			console.log('new user');
@@ -80,7 +85,7 @@ function findUser(uid, callback) {
 						email: newUser.email
 					});
 					newUserRef.remove();
-					
+
 					callback(true);
 				}
 			});
