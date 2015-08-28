@@ -8,6 +8,9 @@ var PORT = 8080;
 
 var app = express();
 
+var loginPage = 1;
+var registrationPage = 2;
+var indexPage = 3;
 var serverDirectory = __dirname;
 
 console.log(serverDirectory);
@@ -24,11 +27,17 @@ app.get('/registration', function(request, response) {
 });
 
 app.get('/app*', function (request, response) {
-	authenticate(request, function (authenticated) {
-		if (authenticated) {
-			response.sendFile(serverDirectory + '/output/app/debug/index.html');
-		} else {
-			response.sendFile(serverDirectory + '/output/login/debug/login.html');
+	authenticate(request, function (authenticateResponse) {
+		switch (authenticateResponse) {
+			case indexPage:
+				response.sendFile(serverDirectory + '/output/app/debug/index.html');
+				break;
+			case loginPage:
+				response.sendFile(serverDirectory + '/output/login/debug/login.html');
+				break;
+			case registrationPage:
+				response.sendFile(serverDirectory + '/output/registration/debug/registration.html');
+				break;
 		}
 	});
 });
@@ -49,16 +58,16 @@ function authenticate(request, callback) {
 		{
 			ref.authWithCustomToken(request.query.token, function(error, authData) {
 				if (error) {
-					callback(false);
+					callback(loginPage);
 				} else {
 					findUser(authData.uid, callback)
 				}
 			});
 		} catch (err) {
-			callback(false);
+			callback(loginPage);
 		}
 	} else {
-		callback(false);
+		callback(loginPage);
 	}
 };
 
@@ -75,24 +84,28 @@ function findUser(uid, callback) {
 			newUserRef.once('value', function(newUserRefSnap) {
 				if (newUserRefSnap.val() == null) {
 					console.log('new user not found');
-					callback(false);
+					callback(registrationPage);
 				} else {
 					var newUser = newUserRefSnap.val();
 					console.log('new user found');
 					var usersRef = new Firebase('https://flickering-torch-2606.firebaseio.com/users');
 					usersRef.child(uid).set({
-						name: newUser.name,
-						email: newUser.email
+						firstName: newUser.firstName,
+						lastName: newUser.lastName,
+						phone: newUser.phone,
+						email: newUser.email,
+						referral: newUser.referral,
+						bio: newUser.bio
 					});
 					newUserRef.remove();
 
-					callback(true);
+					callback(indexPage);
 				}
 			});
 		}
 		else {
 			console.log('user found');
-			callback(true);
+			callback(indexPage);
 		}
 	});
 }
