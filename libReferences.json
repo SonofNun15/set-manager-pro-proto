@@ -6,7 +6,7 @@
 	{
 		"js": "angular-messages/angular-messages.js",
 		"min": "angular-messages/angular-messages.min.js"
-	}
+	},
 	{
 		"js": "angular-animate/angular-animate.js",
 		"min": "angular-animate/angular-animate.min.js"
