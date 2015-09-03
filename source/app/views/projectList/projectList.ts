@@ -1,6 +1,7 @@
 /// <reference path='../../../../typings/angularjs/angular.d.ts' />
 /// <reference path='../../../../typings/firebase/firebase.d.ts' />
 /// <reference path='../../../../typings/angularfire/angularfire.d.ts' />
+/// <reference path='../../../../typings/angular-ui-router/angular-ui-router.d.ts' />
 
 module sm.views.projectList {
 	interface IProject {
@@ -13,9 +14,11 @@ module sm.views.projectList {
 		userId: string;
 		projectList: AngularFireArray;
 		newProject: IProject;
+		state: any;
 
-		static $inject: string[] = ['$firebaseArray'];
-		constructor(private firebaseArray: AngularFireArrayService) {
+		static $inject: string[] = ['$firebaseArray', '$state'];
+		constructor(private firebaseArray: AngularFireArrayService, state: any) {
+			this.state = state;
 			var ref: Firebase = new Firebase('https://flickering-torch-2606.firebaseio.com');
 			var projectsRef: Firebase = new Firebase('https://flickering-torch-2606.firebaseio.com/projects');
 
@@ -57,6 +60,11 @@ module sm.views.projectList {
 
 		editProject(project: IProject): void {
 			this.projectList.$save(project);
+		}
+
+		openProject(project: IProject): void {
+			var projectId: string = this.projectList.$keyAt(project);
+			this.state.go('shotList', { projectId: projectId });
 		}
 	}
 

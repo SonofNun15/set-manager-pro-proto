@@ -10,6 +10,7 @@ module sm.views.projectView {
 				project: '=',
 				deleteProject: '&',
 				editProject: '&',
+				openProject: '&',
 			}
 		};
 	}

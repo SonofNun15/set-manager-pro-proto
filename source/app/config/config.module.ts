@@ -28,8 +28,8 @@ module sm.config {
 				controllerAs: 'controller',
 			})
 			.state('shotList', {
-				url: '/shotList',
-				templateUrl: '/views/shotList/shotList.html',
+				url: '/shotList/:projectId',
+ 				templateUrl: '/views/shotList/shotList.html',
 				controller: 'ShotListController',
 				controllerAs: 'controller',
 			})

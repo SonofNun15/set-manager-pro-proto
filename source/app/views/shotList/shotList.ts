@@ -17,12 +17,11 @@ module sm.views.shotList {
 		newShot: IShot;
 		projectId: string;
 
-		static $inject: string[] = ['$firebaseArray'];
-		constructor(firebaseArray: AngularFireArrayService) {
-			this.projectId = '-JyClfS77EWCGSnyoYP-'; // projectId must be passed in
+		static $inject: string[] = ['$firebaseArray', '$stateParams', '$state'];
+		constructor(firebaseArray: AngularFireArrayService, stateParams: any, state: any) {
+			this.projectId = stateParams.projectId;
 			var shotListsRef: Firebase = new Firebase('https://flickering-torch-2606.firebaseio.com/shotList');
 
-			// For now we pick the first project for the current user. Later the projectId will be passed in.				
 			// create a query for the shotList for the current project
 			var query: any = shotListsRef.orderByChild('projectId').equalTo(this.projectId);
 			// the firebaseArray service properly handles database queries as well

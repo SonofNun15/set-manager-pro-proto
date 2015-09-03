@@ -2,7 +2,7 @@
 	<div>
 		<div ng-repeat="project in controller.projectList">
 			<sm-project-view project="project" delete-project="controller.deleteProject(project)"
-				edit-project="controller.editProject(project)">
+				edit-project="controller.editProject(project)" open-project="controller.openProject(project)">
 			</sm-project-view>
 		</div>
 	</md-list>
