@@ -1,6 +1,4 @@
 var express = require('express');
-var _ = require('lodash');
-var Firebase = require('firebase');
 
 var routes = require('./server/routes');
 

@@ -9,3 +9,12 @@ main {
 md-content {
 	background-color: #eee;
 }
+
+header.main ul.nav {
+	list-style: none;
+	display: inline-block;
+}
+
+header.main ul.nav li {
+	display: inline-block;
+}
