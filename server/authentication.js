@@ -1,4 +1,11 @@
-function authenticate(request, callback) {
+var _ = require('lodash');
+var Firebase = require('firebase');
+
+exports.loginPage = 1;
+exports.registrationPage = 2;
+exports.indexPage = 3;
+
+exports.authenticate = function(request, callback) {
 	if (!_.isUndefined(request.query.token)) {
 		var ref = new Firebase('https://flickering-torch-2606.firebaseio.com');
 
@@ -6,16 +13,16 @@ function authenticate(request, callback) {
 		{
 			ref.authWithCustomToken(request.query.token, function(error, authData) {
 				if (error) {
-					callback(loginPage);
+					callback(exports.loginPage);
 				} else {
 					findUser(authData.uid, callback)
 				}
 			});
 		} catch (err) {
-			callback(loginPage);
+			callback(exports.loginPage);
 		}
 	} else {
-		callback(loginPage);
+		callback(exports.loginPage);
 	}
 };
 
@@ -32,7 +39,7 @@ function findUser(uid, callback) {
 			newUserRef.once('value', function(newUserRefSnap) {
 				if (newUserRefSnap.val() == null) {
 					console.log('new user not found');
-					callback(registrationPage);
+					callback(exports.registrationPage);
 				} else {
 					var newUser = newUserRefSnap.val();
 					console.log('new user found');
@@ -47,15 +54,13 @@ function findUser(uid, callback) {
 					});
 					newUserRef.remove();
 
-					callback(indexPage);
+					callback(exports.indexPage);
 				}
 			});
 		}
 		else {
 			console.log('user found');
-			callback(indexPage);
+			callback(exports.indexPage);
 		}
 	});
 }
-
-module.exports = authenticate;

@@ -1,10 +1,7 @@
 var express = require('express');
 
-var authenticate = require('.authentication');
+var authentication = require('./authentication');
 
-var loginPage = 1;
-var registrationPage = 2;
-var indexPage = 3;
 
 exports.viewsPath = '/output/app/debug/views';
 exports.appPath = '/output/app/debug';
@@ -18,27 +15,27 @@ exports.loginIndex = '/output/login/debug/login.html';
 exports.registrationIndex = '/output/registration/debug/registration.html';
 
 exports.config = function(app, directory) {
-	app.use('/views', express.static(getResourcePath(exports.views)));
-	app.use('/js/app', express.static(getResourcePath(exports.app)));
-	app.use('/js/login', express.static(getResourcePath(exports.login)));
-	app.use('/js/registration', express.static(getResourcePath(exports.registration)));
-	app.use('/libraries', express.static(getResourcePath(exports.libraries)));
-	app.use('/assets', express.static(getResourcePath(exports.assets)));
+	app.use('/views', express.static(getResourcePath(exports.viewsPath)));
+	app.use('/js/app', express.static(getResourcePath(exports.appPath)));
+	app.use('/js/login', express.static(getResourcePath(exports.loginPath)));
+	app.use('/js/registration', express.static(getResourcePath(exports.registrationPath)));
+	app.use('/libraries', express.static(getResourcePath(exports.librariesPath)));
+	app.use('/assets', express.static(getResourcePath(exports.assetsPath)));
 
 	app.get('/registration', function(request, response) {
 		return response.sendFile(getResourcePath(exports.registrationIndex));
 	});
 
 	app.get('/app*', function (request, response) {
-		authenticate(request, function (authenticateResponse) {
+		authentication.authenticate(request, function (authenticateResponse) {
 			switch (authenticateResponse) {
-				case indexPage:
+				case authentication.indexPage:
 					response.sendFile(getResourcePath(exports.appIndex));
 					break;
-				case loginPage:
+				case authentication.loginPage:
 					response.sendFile(getResourcePath(exports.loginIndex));
 					break;
-				case registrationPage:
+				case authentication.registrationPage:
 					response.sendFile(getResourcePath(exports.registrationIndex));
 					break;
 			}
