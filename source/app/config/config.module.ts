@@ -21,11 +21,19 @@ module sm.config {
 	routes.$inject = ['$stateProvider']; // Include $state if necessary to init
 	function routes($stateProvider: ng.ui.IStateProvider): void {
 		$stateProvider
+			.state('dashboard', {
+				url: '/',
+				template: '<h1>Dashboard</h1>',
+			})
 			.state('projectList', {
 				url: '/projectList',
 				templateUrl: '/views/projectList/projectList.html',
 				controller: 'ProjectListController',
 				controllerAs: 'controller',
+			})
+			.state('contacts', {
+				url: '/contacts',
+				template: '<h1>Contacts</h1>',
 			})
 			.state('shotList', {
 				url: '/shotList/:projectId',
