@@ -4,6 +4,7 @@ var authentication = require('./authentication');
 
 
 exports.viewsPath = '/output/app/debug/views';
+exports.componentsPath = '/output/app/debug/components';
 exports.appPath = '/output/app/debug';
 exports.loginPath = '/output/login/debug';
 exports.registrationPath = '/output/registration/debug';
@@ -16,6 +17,7 @@ exports.registrationIndex = '/output/registration/debug/registration.html';
 
 exports.config = function(app, directory) {
 	app.use('/views', express.static(getResourcePath(exports.viewsPath)));
+	app.use('/components', express.static(getResourcePath(exports.componentsPath)));
 	app.use('/js/app', express.static(getResourcePath(exports.appPath)));
 	app.use('/js/login', express.static(getResourcePath(exports.loginPath)));
 	app.use('/js/registration', express.static(getResourcePath(exports.registrationPath)));
