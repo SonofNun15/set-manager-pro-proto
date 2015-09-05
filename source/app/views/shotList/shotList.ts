@@ -20,10 +20,10 @@ module sm.views.shotList {
 		static $inject: string[] = ['$firebaseArray', '$stateParams', '$state'];
 		constructor(firebaseArray: AngularFireArrayService, stateParams: any, state: any) {
 			this.projectId = stateParams.projectId;
-			var shotListsRef: Firebase = new Firebase('https://flickering-torch-2606.firebaseio.com/shotList');
+			var shotListRef: Firebase = new Firebase('https://flickering-torch-2606.firebaseio.com/shotList');
 
 			// create a query for the shotList for the current project
-			var query: any = shotListsRef.orderByChild('projectId').equalTo(this.projectId);
+			var query: any = shotListRef.orderByChild('projectId').equalTo(this.projectId);
 			// the firebaseArray service properly handles database queries as well
 			this.shotList = firebaseArray(query);
 
