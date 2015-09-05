@@ -1,0 +1,21 @@
+<div>
+	<header>
+		<ul class="nav">
+			<li ui-sref-active="active">
+				<a ui-sref="project.dashboard({ projectId: projectId })">Info</a>
+			</li>
+			<li ui-sref-active="active">
+				<a ui-sref="project.crew({ projectId: projectId })">Crew</a>
+			</li>
+			<li ui-sref-active="active">
+				<a ui-sref="project.shotList({ projectId: projectId })">Shot List</a>
+			</li>
+			<li ui-sref-active="active">
+				<a ui-sref="project.schedule({ projectId: projectId })">Schedule</a>
+			</li>
+		</ul>
+	</header>
+	<md-content>
+		<ui-view></ui-view>
+	</md-content>
+</div>
