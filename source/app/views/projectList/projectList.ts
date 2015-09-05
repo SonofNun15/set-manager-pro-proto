@@ -55,7 +55,24 @@ module sm.views.projectList {
 		}
 
 		deleteProject(project: IProject): void {
-			this.projectList.$remove(project);
+			var projectId: string = this.projectList.$keyAt(project);
+			// delete the project;
+			this.projectList.$remove(project).then ((): void => {
+				var shotListRef: Firebase = new Firebase('https://flickering-torch-2606.firebaseio.com/shotList');
+				var shotList: AngularFireArray = this.firebaseArray(shotListRef);
+	
+				// get the shotList for the current project
+				var query: any = shotListRef.orderByChild('projectId').equalTo(projectId);
+				var projectShotList: AngularFireArray = this.firebaseArray(query);
+				projectShotList.$loaded().then ((): void => {
+					// delete the shots for the current project
+					projectShotList.forEach((shot: AngularFireSimpleObject, index: number, array: AngularFireSimpleObject[]) => {
+						var record: AngularFireSimpleObject = shotList.$getRecord(shot.$id);
+						shotList.$remove(record);				
+					});
+				});
+			});
+			
 		}
 
 		editProject(project: IProject): void {
