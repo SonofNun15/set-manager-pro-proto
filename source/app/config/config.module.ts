@@ -35,17 +35,37 @@ module sm.config {
 				url: '/contacts',
 				template: '<h1>Contacts</h1>',
 			})
-			.state('shotList', {
-				url: '/shotList/:projectId',
+			.state('project', {
+				url: '/project/{projectId}',
+				abstract: true,
+				templateUrl: '/views/projectPage/project.html',
+				controller: ($stateParams: any, $scope: any): void => {
+					$scope.projectId = $stateParams.projectId;
+				},
+			})
+			.state('project.dashboard', {
+				url: '/dashboard',
+				//templateUrl: '/views/project/dashboard/dashboard.html',
+				parent: 'project',
+			})
+			.state('project.crew', {
+				url: '/crew',
+				//templateUrl: '/views/project/crew/crew.html',
+				parent: 'project',
+			})
+			.state('project.shotList', {
+				url: '/shotList',
  				templateUrl: '/views/shotList/shotList.html',
 				controller: 'ShotListController',
 				controllerAs: 'controller',
+				parent: 'project',
 			})
-			.state('schedule', {
+			.state('project.schedule', {
 				url: '/schedule',
 				templateUrl: '/views/schedule/schedule.html',
 				controller: 'ScheduleController',
 				controllerAs: 'controller',
+				parent: 'project',
 			});
 	}
 }
