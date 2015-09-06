@@ -25,11 +25,11 @@ module sm.views.projectList {
 			var authData: FirebaseAuthData = ref.getAuth();
 			this.userId = authData.uid;
 			console.log('uid = ' + this.userId);
-			
+
 			// create a query for the projects owned by the current user
 			var query: any = projectsRef.orderByChild('userId').equalTo(this.userId);
 			// the firebaseArray service properly handles database queries as well
-			this.projectList = firebaseArray(query);			
+			this.projectList = firebaseArray(query);
 			// this.projectList = firebaseArray(projectsRef);
 		}
 
@@ -60,7 +60,7 @@ module sm.views.projectList {
 			this.projectList.$remove(project).then ((): void => {
 				var shotListRef: Firebase = new Firebase('https://flickering-torch-2606.firebaseio.com/shotList');
 				var shotList: AngularFireArray = this.firebaseArray(shotListRef);
-	
+
 				// get the shotList for the current project
 				var query: any = shotListRef.orderByChild('projectId').equalTo(projectId);
 				var projectShotList: AngularFireArray = this.firebaseArray(query);
@@ -68,11 +68,11 @@ module sm.views.projectList {
 					// delete the shots for the current project
 					projectShotList.forEach((shot: AngularFireSimpleObject, index: number, array: AngularFireSimpleObject[]) => {
 						var record: AngularFireSimpleObject = shotList.$getRecord(shot.$id);
-						shotList.$remove(record);				
+						shotList.$remove(record);
 					});
 				});
 			});
-			
+
 		}
 
 		editProject(project: IProject): void {
