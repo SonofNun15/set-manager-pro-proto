@@ -81,7 +81,7 @@ module sm.views.projectList {
 
 		openProject(project: IProject): void {
 			var projectId: string = this.projectList.$keyAt(project);
-			this.state.go('shotList', { projectId: projectId });
+			this.state.go('project.dashboard', { projectId: projectId });
 		}
 	}
 
