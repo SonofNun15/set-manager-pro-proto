@@ -1,0 +1,13 @@
+<md-content>
+	<div>
+		<div ng-repeat="contact in controller.contactList">
+			<sm-contact-view contact="contact" delete-contact="controller.deleteContact(contact)"
+				edit-contact="controller.editContact(contact)"
+			</sm-contact-view>
+		</div>
+	</md-list>
+	<div class="content-group">
+		<sm-contact-editor contact="controller.newContact"></sm-contact-editor>
+	</div>
+	<button class="btn btn-success" ng-click="controller.createContact()">Create Contact</button>
+</md-content>

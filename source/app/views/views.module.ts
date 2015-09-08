@@ -6,6 +6,8 @@
 /// <reference path='shotList/shotList.ts' />
 /// <reference path='project/project.module.ts' />
 /// <reference path='projectList/projectList.ts' />
+/// <reference path='contact/contact.module.ts' />
+/// <reference path='contactList/contactList.ts' />
 
 module sm.views {
 	angular.module('sm.views', [
@@ -15,5 +17,7 @@ module sm.views {
 		'sm.views.adshot',
 		'sm.views.projectList',
 		'sm.views.project',
+		'sm.views.contactList',
+		'sm.views.contact',
 	]);
 }
