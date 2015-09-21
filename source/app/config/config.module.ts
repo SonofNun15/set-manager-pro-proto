@@ -33,7 +33,9 @@ module sm.config {
 			})
 			.state('contacts', {
 				url: '/contacts',
-				template: '<h1>Contacts</h1>',
+				templateUrl: '/views/contactList/contactList.html',
+				controller: 'ContactListController',
+				controllerAs: 'controller',
 			})
 			.state('project', {
 				url: '/project/{projectId}',
