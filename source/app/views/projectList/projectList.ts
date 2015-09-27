@@ -3,21 +3,25 @@
 /// <reference path='../../../../typings/angularfire/angularfire.d.ts' />
 /// <reference path='../../../../typings/angular-ui-router/angular-ui-router.d.ts' />
 
-module sm.views.projectList {
-	interface IProject {
+module sm.views.projectList 
+{
+	interface IProject 
+	{
 		name: string;
 		description: string;
 		userId: string;
 	}
 
-	class ProjectListController {
+	class ProjectListController 
+	{
 		userId: string;
 		projectList: AngularFireArray;
 		newProject: IProject;
 		state: any;
 
 		static $inject: string[] = ['$firebaseArray', '$state'];
-		constructor(private firebaseArray: AngularFireArrayService, state: any) {
+		constructor(private firebaseArray: AngularFireArrayService, state: any) 
+		{
 			this.state = state;
 			var ref: Firebase = new Firebase('https://flickering-torch-2606.firebaseio.com');
 			var projectsRef: Firebase = new Firebase('https://flickering-torch-2606.firebaseio.com/projects');
@@ -33,14 +37,17 @@ module sm.views.projectList {
 			// this.projectList = firebaseArray(projectsRef);
 		}
 
-		showProject(project: IProject): void {
+		showProject(project: IProject): void 
+		{
 			console.log('Project Name = ' + project.name);
 		}
 
-		createProject(): void {
+		createProject(): void 
+		{
 			var userRef: Firebase = new Firebase('https://flickering-torch-2606.firebaseio.com/users/' + this.userId);
 			userRef.once('value', (userRefSnap: FirebaseDataSnapshot): void => {
-				if (userRefSnap.val() != null) {
+				if (userRefSnap.val() != null) 
+				{
 					this.newProject.userId = this.userId;
 					this.projectList.$add(this.newProject).then((ref: Firebase): void => {
 						var id: string = ref.key();
@@ -54,17 +61,20 @@ module sm.views.projectList {
 			});
 		}
 
-		deleteProject(project: IProject): void {
+		deleteProject(project: IProject): void 
+		{
 			var projectId: string = this.projectList.$keyAt(project);
 			// delete the project;
-			this.projectList.$remove(project).then ((): void => {
+			this.projectList.$remove(project).then ((): void => 
+			{
 				var shotListRef: Firebase = new Firebase('https://flickering-torch-2606.firebaseio.com/shotList');
 				var shotList: AngularFireArray = this.firebaseArray(shotListRef);
 
 				// get the shotList for the current project
 				var query: any = shotListRef.orderByChild('projectId').equalTo(projectId);
 				var projectShotList: AngularFireArray = this.firebaseArray(query);
-				projectShotList.$loaded().then ((): void => {
+				projectShotList.$loaded().then ((): void => 
+				{
 					// delete the shots for the current project
 					projectShotList.forEach((shot: AngularFireSimpleObject, index: number, array: AngularFireSimpleObject[]) => {
 						var record: AngularFireSimpleObject = shotList.$getRecord(shot.$id);
@@ -75,24 +85,30 @@ module sm.views.projectList {
 
 		}
 
-		editProject(project: IProject): void {
+		editProject(project: IProject): void 
+		{
 			this.projectList.$save(project);
 		}
 
-		openProject(project: IProject): void {
+		openProject(project: IProject): void 
+		{
 			var projectId: string = this.projectList.$keyAt(project);
 			this.state.go('project.dashboard', { projectId: projectId });
 		}
 	}
 
-	function projectList(): ng.IDirective {
+	function projectList(): ng.IDirective 
+	{
 		'use strict';
-		return {
+		var directive: ng.IDirective;
+		directive = 
+		{
 			restrict: 'E',
 			templateUrl: '/views/projectList/projectList.html',
 			controller: 'ProjectListController',
 			controllerAs: 'controller',
 		};
+		return directive;
 	}
 
 	angular.module('sm.views.projectList', ['firebase'])
