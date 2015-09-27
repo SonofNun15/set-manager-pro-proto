@@ -8,7 +8,7 @@ var locations = require('./locations.json');
 gulpUtilities.build.config({
 	locations: locations.app,
 	taskNames: {
-		lint: 'lint.app',
+		// lint: 'lint.app',
 		build: 'build.app',
 		clean: 'clean.app',
 		compile: 'compile.app',
@@ -20,7 +20,7 @@ gulpUtilities.build.config({
 gulpUtilities.build.config({
 	locations: locations.login,
 	taskNames: {
-		lint: 'lint.login',
+		// lint: 'lint.login',
 		build: 'build.login',
 		clean: 'clean.login',
 		compile: 'compile.login',
@@ -32,7 +32,7 @@ gulpUtilities.build.config({
 gulpUtilities.build.config({
 	locations: locations.registration,
 	taskNames: {
-		lint: 'lint.registration',
+		// lint: 'lint.registration',
 		build: 'build.registration',
 		clean: 'clean.registration',
 		compile: 'compile.registration',
