@@ -1,4 +1,8 @@
 <md-content>
+	<md-button class="md-primary md-raised" ng-click="controller.createNewProject($event)" flex flex-md="100">
+		New Project
+	</md-button>
+	
 	<div>
 		<div ng-repeat="project in controller.projectList">
 			<sm-project-view project="project" delete-project="controller.deleteProject(project)"
@@ -6,8 +10,9 @@
 			</sm-project-view>
 		</div>
 	</md-list>
-	<div class="content-group">
+	
+	<!--<div class="content-group">
 		<sm-project-editor project="controller.newProject"></sm-project-editor>
 	</div>
-	<button class="btn btn-success" ng-click="controller.createProject()">Create Project</button>
+	<button class="btn btn-success" ng-click="controller.createProject()">Create Project</button>-->
 </md-content>

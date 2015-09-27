@@ -16,13 +16,16 @@ module sm.views.projectList
 	{
 		userId: string;
 		projectList: AngularFireArray;
-		newProject: IProject;
 		state: any;
+		mdDialog: any;
+		scope: any;
 
-		static $inject: string[] = ['$firebaseArray', '$state'];
-		constructor(private firebaseArray: AngularFireArrayService, state: any) 
+		static $inject: string[] = ['$firebaseArray', '$state', '$mdDialog', '$scope'];
+		constructor(private firebaseArray: AngularFireArrayService, state: any, mdDialog: any, scope: any) 
 		{
 			this.state = state;
+			this.mdDialog = mdDialog;
+			this.scope = scope;
 			var ref: Firebase = new Firebase('https://flickering-torch-2606.firebaseio.com');
 			var projectsRef: Firebase = new Firebase('https://flickering-torch-2606.firebaseio.com/projects');
 
@@ -42,24 +45,40 @@ module sm.views.projectList
 			console.log('Project Name = ' + project.name);
 		}
 
-		createProject(): void 
+		createProject(newProject: IProject): void 
 		{
 			var userRef: Firebase = new Firebase('https://flickering-torch-2606.firebaseio.com/users/' + this.userId);
 			userRef.once('value', (userRefSnap: FirebaseDataSnapshot): void => {
 				if (userRefSnap.val() != null) 
 				{
-					this.newProject.userId = this.userId;
-					this.projectList.$add(this.newProject).then((ref: Firebase): void => {
+					newProject.userId = this.userId;
+					this.projectList.$add(newProject).then((ref: Firebase): void => {
 						var id: string = ref.key();
 						console.log('added project with id ' + id);
 						// var userProjectsRef: Firebase = new Firebase('https://flickering-torch-2606.firebaseio.com/users/' + this.userId + '/projects');
 						// var userProjectList: AngularFireArray = this.firebaseArray(userProjectsRef);
 						// userProjectList.$add({projectId: id});
-						this.newProject = null;
 					});
 				}
 			});
 		}
+
+		createNewProject(ev: any): void {
+			this.mdDialog.show({
+				controller: DialogController,
+				templateUrl: '/views/project/projectEditor.html',
+				parent: angular.element(document.body),
+				targetEvent: ev,
+				clickOutsideToClose:true
+			})
+			.then((answer) =>
+			{
+				if (answer != null)
+				{
+					this.createProject(answer);
+				}
+			}, null );
+		};
 
 		deleteProject(project: IProject): void 
 		{
@@ -96,7 +115,23 @@ module sm.views.projectList
 			this.state.go('project.dashboard', { projectId: projectId });
 		}
 	}
-
+	
+	function DialogController($scope, $mdDialog) 
+	{
+		$scope.hide = function() 
+		{
+			$mdDialog.hide();
+		};
+		$scope.cancel = function() 
+		{
+			$mdDialog.cancel();
+		};
+		$scope.answer = function(answer) 
+		{
+			$mdDialog.hide(answer);
+		};
+	}
+	
 	function projectList(): ng.IDirective 
 	{
 		'use strict';
