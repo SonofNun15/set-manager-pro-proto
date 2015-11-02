@@ -19,5 +19,7 @@ module sm.views {
 		'sm.views.project',
 		'sm.views.contactList',
 		'sm.views.contact',
+		'sm.views.crewList',
+		'sm.views.crew',
 	]);
 }

@@ -1,0 +1,13 @@
+<md-content>
+	<div>
+		<div ng-repeat="crew in controller.crewList">
+			<sm-crew-view crew="crew" delete-crew="controller.deleteCrew(crew)"
+				edit-crew="controller.editCrew(crew)"
+			</sm-crew-view>
+		</div>
+	</md-list>
+	<div class="content-group">
+		<sm-crew-editor crew="controller.newCrew"></sm-crew-editor>
+	</div>
+	<button class="btn btn-success" ng-click="controller.AddCrew()">Add Crew</button>
+</md-content>

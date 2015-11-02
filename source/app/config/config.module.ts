@@ -52,7 +52,9 @@ module sm.config {
 			})
 			.state('project.crew', {
 				url: '/crew',
-				//templateUrl: '/views/project/crew/crew.html',
+				templateUrl: '/views/crewList/crewList.html',
+				controller: 'CrewListController',
+				controllerAs: 'controller',
 				parent: 'project',
 			})
 			.state('project.shotList', {
